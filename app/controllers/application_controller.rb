@@ -5,10 +5,11 @@ class ApplicationController < Sinatra::Base
 
   #user routes
   get '/users' do
+    User.all.to_json(include: [:teams])
     #get all users from the database
-    users = User.all
+    #users = User.all
     #return a JSON response with an array of all the user data
-    users.to_json
+    # users.to_json
   end
 
   # get "/users/:id" do

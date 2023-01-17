@@ -2,10 +2,9 @@ puts "Seeding spices..."
 
 # Seed your database here
 
-User.create(name: "Ash Ketchum")
-
-# Team.create(user_id: ash.id, pokemon_id: bulbasaur.id)
-
-# Pokemon.create(name: "Bulbasaur",type1: "Grass", type2: "Poison", dex_num: 1, sprite: "" )
+# Make 10 users
+10.times do
+    User.create(name: Faker::Name.name)
+  end
 
 puts "✅ Done seeding!"
