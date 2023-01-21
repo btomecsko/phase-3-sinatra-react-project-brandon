@@ -40,10 +40,24 @@ class ApplicationController < Sinatra::Base
     team.to_json
   end
 
+  patch '/teams/:id' do
+    # find the team using the ID
+    team = Team.find(params[:id])
+
+    # update the team in the database
+    team.update(
+      name: params[:name],
+      pokemon_id: params[:pokemon_id]
+    )
+
+    # send back the updated review as JSON
+    review.to_json
+  end
+
   #Pokemon routes
   get '/pokemons' do
   #   #get all pokemon from the database in the order of their pokedex
-     pokemons = Pokemon.uniq.order(:dex_num)
+     pokemons = Pokemon.all.order(:dex_num)
      pokemons.to_json
    end
 
