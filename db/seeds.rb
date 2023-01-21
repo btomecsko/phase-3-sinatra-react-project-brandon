@@ -31,6 +31,6 @@ Pokemon.create(name: "Arbok",type1: "Poison", type2: "", dex_num: 24, dex_info: 
 pika = Pokemon.create(name: "Pikachu",type1: "Electric", type2: "", dex_num: 25, dex_info: "It keeps its tail raised to monitor its surroundings. If you yank its tail, it will try to bite you.", sprite: "https://archives.bulbagarden.net/media/upload/4/4a/0025Pikachu.png" )
 Pokemon.create(name: "Raichu",type1: "Electric", type2: "", dex_num: 26, dex_info: "When electricity builds up inside its body, it becomes feisty. It also glows in the dark.", sprite: "https://archives.bulbagarden.net/media/upload/b/b0/0026Raichu.png" )
 
-Team.create(user_id: ash.id, pokemon_id: bulba.id, pokemon_id: char.id, pokemon_id: butter.id, pokemon_id: pidge.id, pokemon_id: pika.id )
+Team.create(pokemon_id: bulba.id, pokemon_id: char.id, pokemon_id: butter.id, pokemon_id: pidge.id, pokemon_id: pika.id, name: "Kanto", user_id: ash.id)
 
 puts "✅ Done seeding!"
