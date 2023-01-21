@@ -50,8 +50,8 @@ class ApplicationController < Sinatra::Base
       pokemon_id: params[:pokemon_id]
     )
 
-    # send back the updated review as JSON
-    review.to_json
+    # send back the updated team as JSON
+    team.to_json
   end
 
   #Pokemon routes
