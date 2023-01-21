@@ -3,15 +3,15 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 
-const Pokemon = ({name}) => {
+const Pokemon = ({name, type1, type2, dex, description, sprite}) => {
   return (
       <li className="moviesCard">
       <Card style={{ width: '18rem', backgroundColor: '#3C4048'}}>
-      {/* <Card.Img className="movieImage" variant="top" src={poster} alt={title}/> */}
+      <Card.Img className="pokeImage" variant="top" src={sprite} alt={name}/>
       <ListGroup className="list-group-flush">
         <ListGroup.Item style={{backgroundColor: '#3C4048'}}><b>{name}</b></ListGroup.Item>
-        {/* <ListGroup.Item style={{backgroundColor: '#3C4048'}}><i>{genre}</i></ListGroup.Item>
-        <ListGroup.Item style={{backgroundColor: '#3C4048', color: '#EAEAEA'}}>{year}</ListGroup.Item> */}
+        <ListGroup.Item style={{backgroundColor: '#3C4048'}}><i>{dex}{type1}{type2}</i></ListGroup.Item>
+        <ListGroup.Item style={{backgroundColor: '#3C4048', color: '#EAEAEA'}}>{description}</ListGroup.Item>
       </ListGroup>
       </Card>
       </li>
@@ -19,4 +19,4 @@ const Pokemon = ({name}) => {
   );
 }
 
-export default Movies;
+export default Pokemon;
