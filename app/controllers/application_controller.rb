@@ -27,25 +27,32 @@ class ApplicationController < Sinatra::Base
   end
 
   #Team routes
+  get '/teams' do 
+
+    teams = Team.all
+
+    teams.to_json
+  end
+
   post '/teams' do
     # create a new Team in the database
     # params is a hash of key-value pairs coming from the body of the request
-    team = Team.create(
+    teams = Team.create(
       name: params[:name],
       pokemon_id: params[:pokemon_id],
       user_id: params[:user_id]
     )
 
     # send back a response with the created team as JSON
-    team.to_json
+    teams.to_json
   end
 
   patch '/teams/:id' do
     # find the team using the ID
-    team = Team.find(params[:id])
+    teams = Team.find(params[:id])
 
     # update the team in the database
-    team.update(
+    teams.update(
       name: params[:name],
       pokemon_id: params[:pokemon_id]
     )
@@ -56,10 +63,10 @@ class ApplicationController < Sinatra::Base
 
   delete '/teams/:id' do
     # find the team using the ID
-    team = Team.find(params[:id])
+    teams = Team.find(params[:id])
 
     # delete the team
-    team.destroy
+    teams.destroy
 
     # send a response with the deleted team as JSON
     review.to_json
@@ -69,7 +76,7 @@ class ApplicationController < Sinatra::Base
   get '/pokemons' do
   #   #get all pokemon from the database in the order of their pokedex
      pokemons = Pokemon.all.order(:dex_num)
-     pokemons.to_json
+     pokemons.to_json(include: :teams)
    end
 
 end
