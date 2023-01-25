@@ -13,18 +13,21 @@ const PokemonContainer = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
   const searchPokemon = pokemon.filter((poke) =>
-    poke.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+     poke.name.toLowerCase().includes(searchTerm.toLowerCase())
+   );
 
   function handleChange(e) {
-    setSearchTerm(e.target.value);
+     setSearchTerm(e.target.value);
   }
 
   useEffect(() => {
-    fetch('http://localhost:9292/pokemons')
-      .then(res => res.json())
-      .then(data => setPokemon(data))
-      .catch(err => console.error(err))
+
+    const loadPokemon = async () => {
+      const resp = await fetch('http://localhost:9292/pokemons')
+      const data = await resp.json();
+      setPokemon(data);
+    }
+    loadPokemon();
   }, []);
 
   return (
@@ -33,10 +36,10 @@ const PokemonContainer = () => {
       <Form className="d-flex">
         <Form.Control className="prompt" value={searchTerm} onChange={handleChange} placeholder="Search for Pokemon" />
         <i className="search icon" />
-      </Form>
+      </Form> 
       <div>
         <ul className="pokemonList">
-          {searchPokemon.map(poke => (
+          {searchPokemon.length > 0 ? searchPokemon.map(poke => (
             <Pokemon
               key={poke.id}
               name={poke.name}
@@ -46,7 +49,9 @@ const PokemonContainer = () => {
               description={poke.dex_info}
               sprite={poke.sprite}
             />
-          ))}
+          ))
+          : "No Pokemon to Display!"
+        }
         </ul>
       </div>
     </div>
