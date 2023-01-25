@@ -8,6 +8,13 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  let teamClick = () => {
+    navigate("/teams")
+  }
+
+  let pokedexClick = () => {
+    navigate("/pokedex")
+  }
 
     return (
       <Fragment>
@@ -17,10 +24,10 @@ const Home = () => {
       </div>
         <div className='home' >
         {/* <img src={LogoImg} alt="App Logo" className="logo" /> */}
-          <Button id="teamBtn" type="submit" style={{textTransform: 'uppercase', fontSize: '12px', fontWeight: '700', textAlign: 'center', backgroundColor: '#222224', border: '1px solid #1BA098', borderRadius: '100px', marginBottom: '5px'}}>
+          <Button id="teamBtn" onClick={teamClick} style={{textTransform: 'uppercase', fontSize: '12px', fontWeight: '700', textAlign: 'center', backgroundColor: '#222224', border: '1px solid #1BA098', borderRadius: '50px', height: '20%', width: '65%', margin: '75px 50px 0 50px'}}>
             Create Team
           </Button>
-          <Button id="pokedexBtn" type="submit" style={{textTransform: 'uppercase', fontSize: '12px', fontWeight: '700', textAlign: 'center', backgroundColor: '#222224', border: '1px solid #1BA098', borderRadius: '100px', marginBottom: '5px'}}>
+          <Button id="pokedexBtn" onClick={pokedexClick} style={{textTransform: 'uppercase', fontSize: '12px', fontWeight: '700', textAlign: 'center', backgroundColor: '#222224', border: '1px solid #1BA098', borderRadius: '50px', height: '20%', width: '65%', margin: '25px 50px 75px 50px'}}>
             Pokedex
           </Button>
         </div>
