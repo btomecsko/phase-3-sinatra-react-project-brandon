@@ -1,5 +1,4 @@
 class Team < ActiveRecord::Base
+    belongs_to :pokemon
     belongs_to :user 
-    belongs_to :pokemons
-
 end
