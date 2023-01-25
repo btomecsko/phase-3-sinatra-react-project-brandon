@@ -26,6 +26,19 @@ class ApplicationController < Sinatra::Base
       user.to_json
   end
 
+  patch '/users/:id' do
+    # find the team using the ID
+    user = User.find(params[:id])
+
+    # update the team in the database
+    user.update(
+      name: params[:name],
+    )
+
+    # send back the updated team as JSON
+    user.to_json
+  end
+
   #Team routes
   get '/teams' do 
 
