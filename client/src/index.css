@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home {
+  position: relative;
+  height: 425px;
+  width: 500px;
+  border: 5px solid;
+  border-color: #e4000f;
+  box-shadow: 4px 4px 10px 5px rgba(203, 203, 203, 0.49);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto; 
+  float: none; 
+  margin-top: 100px;
+}
+
+.header {
+  text-align: center;
+  color: #222224;
+  margin: 75px auto;
+}
