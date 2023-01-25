@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from "./components/Home";
 import Team from "./components/Team";
 import PokemonContainer from "./components/PokemonContainer";
