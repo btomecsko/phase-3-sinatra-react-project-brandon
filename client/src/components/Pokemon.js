@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 const Pokemon = ({name, type1, type2, dex, description, sprite}) => {
   return (
-      <li className="moviesCard">
+      <li className="pokeCard">
       <Card style={{ width: '18rem', backgroundColor: '#3C4048'}}>
       <Card.Img className="pokeImage" variant="top" src={sprite} alt={name}/>
       <ListGroup className="list-group-flush">

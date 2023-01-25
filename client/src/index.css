@@ -33,3 +33,35 @@ code {
   color: #222224;
   margin: 75px auto;
 }
+
+.d-flex {
+  margin: auto; 
+  float: none; 
+  margin-top: 20px;
+  width: 500px;
+}
+
+.pokemonContainer {
+  margin-top: 20px;
+}
+
+.pokemonList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  margin: 20px;
+  padding: 0;
+}
+
+.pokeCard{
+  border: 3px solid;
+  background-color: beige;
+  margin: 10px;
+}
+
+.pokeImage{
+  width: 100%;
+  height: 20vw;
+  object-fit: contain;
+}
