@@ -6,17 +6,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Teams = ({pokemon}) => {
+const Teams = ({ pokemon }) => {
     const [teams, setTeams] = useState([]);
 
     const [form, setForm] = useState({});
 
     let handleChange = (e) => {
-        let name = e.target.name;
+        let key = e.target.key
+        let name = e.target.name
         let value = e.target.value
         setForm({
-            ...form,
-            [name]: value,
+            [key]: value,
+            [name]:value,
         })
     }
 
@@ -42,16 +43,16 @@ const Teams = ({pokemon}) => {
                     <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                <Form.Label>Select Pokemon</Form.Label>
+                    <Form.Label>Select Pokemon</Form.Label>
                     <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
-                        {pokemon.length > 0 ? pokemon.map( poke => (
-                        <Dropdown
-                        key={poke.id}
-                        name={poke.name}
-                        />
+                        {pokemon.length > 0 ? pokemon.map(poke => (
+                            <Dropdown
+                                key={poke.id}
+                                name={poke.name}
+                            />
                         ))
-                        : "No Pokemon to List!"
-}
+                            : "No Pokemon to List!"
+                        }
                     </Form.Select>
                 </Form.Group>
                 <Button style={{ backgroundColor: '#00ABB3' }} type="submit">
