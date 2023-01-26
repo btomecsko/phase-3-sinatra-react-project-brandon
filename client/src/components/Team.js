@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from "react";
 
+import Dropdown from "./Dropdown";
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Teams = () => {
+const Teams = ({pokemon}) => {
     const [teams, setTeams] = useState([]);
 
     const [form, setForm] = useState({});
@@ -42,7 +44,14 @@ const Teams = () => {
                 <Form.Group className="mb-3">
                 <Form.Label>Select Pokemon</Form.Label>
                     <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
-                        <option>Disabled select</option>
+                        {pokemon.length > 0 ? pokemon.map( poke => (
+                        <Dropdown
+                        key={poke.id}
+                        name={poke.name}
+                        />
+                        ))
+                        : "No Pokemon to List!"
+}
                     </Form.Select>
                 </Form.Group>
                 <Button style={{ backgroundColor: '#00ABB3' }} type="submit">

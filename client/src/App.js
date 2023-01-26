@@ -31,7 +31,9 @@ const App = () => {
     <div className="App">
       <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/teams" element={<Team />} />
+          <Route path="/teams" element={<Team 
+          pokemon={searchPokemon}
+          />} />
           <Route path="/pokedex" element={<PokemonContainer 
           pokemon={searchPokemon}
           onSearch={setSearchTerm}
