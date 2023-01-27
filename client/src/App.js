@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./components/Home";
-import Team from "./components/Team";
+import TeamForm from "./components/TeamForm";
 import PokemonContainer from "./components/PokemonContainer";
 
 
@@ -27,12 +27,16 @@ const App = () => {
      poke.name.toLowerCase().includes(searchTerm.toLowerCase())
    );
 
+   const pokeId = pokemon.filter((poke) =>
+      poke.id === searchTerm)[0];
+
   return (
     <div className="App">
       <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/teams" element={<Team 
+          <Route path="/createteam" element={<TeamForm 
           pokemon={searchPokemon}
+          pokeId={pokeId}
           />} />
           <Route path="/pokedex" element={<PokemonContainer 
           pokemon={searchPokemon}

@@ -2,9 +2,9 @@ import React from "react";
 
 
 
-const Dropdown = ({name}) => {
+const Dropdown = ({name, pokeid}) => {
   return (
-      <option>{name}</option>
+      <option id={pokeid}>{name}</option>
     
   );
 }

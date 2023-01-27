@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   let teamClick = () => {
-    navigate("/teams")
+    navigate("/createteam")
   }
 
   let pokedexClick = () => {
