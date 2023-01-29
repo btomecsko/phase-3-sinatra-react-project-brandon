@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from "react";
 
-import Dropdown from "./Dropdown";
+import PokeDrop from "./PokeDrop";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+
 
 const Teams = ({ pokemon }) => {
     const [teams, setTeams] = useState([]);
@@ -17,7 +18,6 @@ const Teams = ({ pokemon }) => {
         let value = e.target.value
         setForm({
             ...form,
-            //[pokemon_id]: value,
             [name]:value,
         })
     }
@@ -47,7 +47,7 @@ const Teams = ({ pokemon }) => {
                     <Form.Label>Select Pokemon</Form.Label>
                     <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
                         {pokemon.length > 0 ? pokemon.map(poke => (
-                            <Dropdown
+                            <PokeDrop
                                 key={poke.id}
                                 pokeid={poke.id}
                                 name={poke.name}

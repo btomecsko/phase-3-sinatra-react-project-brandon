@@ -2,11 +2,11 @@ import React from "react";
 
 
 
-const Dropdown = ({name, pokeid}) => {
+const PokeDrop = ({name, pokeid}) => {
   return (
       <option value={pokeid}>{name}</option>
     
   );
 }
 
-export default Dropdown;
+export default PokeDrop;

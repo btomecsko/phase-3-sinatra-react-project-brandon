@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./components/Home";
 import TeamForm from "./components/TeamForm";
-import PokemonContainer from "./components/PokemonContainer";
+import PokemonContainer from "./components/Pokedex/PokemonContainer";
+import CreateUser from "./components/CreateUser";
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           pokemon={searchPokemon}
           pokeId={pokeId}
           />} />
+          <Route path="createuser" element={<CreateUser/>}/>
           <Route path="/pokedex" element={<PokemonContainer 
           pokemon={searchPokemon}
           onSearch={setSearchTerm}
