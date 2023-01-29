@@ -1,5 +1,5 @@
 class Pokemon < ActiveRecord::Base
-    has_many :teams
-    has_many :users, through: :teams
+    has_many :starters
+    has_many :users, through: :starters
     
 end

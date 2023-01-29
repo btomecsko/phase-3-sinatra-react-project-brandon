@@ -15,8 +15,8 @@ class ApplicationController < Sinatra::Base
   get '/users/:id' do
      user = User.find(params[:id])
 
-     #JSON response with associated teams and pokemon
-     user.to_json(include: { teams: {include: {pokemon: { only: [:name, :sprite]}}}} )
+     #JSON response with associated starters and pokemon
+     user.to_json(include: { starters: {include: {pokemon: { only: [:name, :sprite]}}}} )
   end
 
   post '/users' do
@@ -27,69 +27,69 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/users/:id' do
-    # find the team using the ID
+    # find the starter using the ID
     user = User.find(params[:id])
 
-    # update the team in the database
+    # update the starter in the database
     user.update(
       name: params[:name],
     )
 
-    # send back the updated team as JSON
+    # send back the updated starter as JSON
     user.to_json
   end
 
-  #Team routes
-  get '/teams' do 
+  #Starter routes
+  get '/starters' do 
 
-    teams = Team.all
+    starters = Starter.all
 
-    teams.to_json
+    starters.to_json
   end
 
-  post '/teams' do
-    # create a new Team in the database
+  post '/starters' do
+    # create a new starter in the database
     # params is a hash of key-value pairs coming from the body of the request
-    teams = Team.create(
+    starters = Starter.create(
       name: params[:name],
       pokemon_id: params[:pokemon_id],
       user_id: params[:user_id]
     )
 
-    # send back a response with the created team as JSON
-    teams.to_json
+    # send back a response with the created starter as JSON
+    starters.to_json
   end
 
-  patch '/teams/:id' do
-    # find the team using the ID
-    teams = Team.find(params[:id])
+  patch '/starters/:id' do
+    # find the starter using the ID
+    starters = Starter.find(params[:id])
 
-    # update the team in the database
-    teams.update(
+    # update the starter in the database
+    starters.update(
       name: params[:name],
       pokemon_id: params[:pokemon_id]
     )
 
-    # send back the updated team as JSON
-    team.to_json
+    # send back the updated starter as JSON
+    starters.to_json
   end
 
-  delete '/teams/:id' do
-    # find the team using the ID
-    teams = Team.find(params[:id])
+  delete '/starters/:id' do
+    # find the starter using the ID
+    starters = Starter.find(params[:id])
 
-    # delete the team
-    teams.destroy
+    # delete the starter
+    starters.destroy
 
-    # send a response with the deleted team as JSON
-    review.to_json
+    # send a response with the deleted starter as JSON
+    starters.to_json
   end
   
   #Pokemon routes
   get '/pokemons' do
   #   #get all pokemon from the database in the order of their pokedex
      pokemons = Pokemon.all.order(:dex_num)
-     pokemons.to_json(include: :teams)
+     pokemons.to_json(include: :starters)
    end
 
 end

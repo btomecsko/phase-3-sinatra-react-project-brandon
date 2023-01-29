@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_195258) do
+ActiveRecord::Schema.define(version: 2023_01_29_224551) do
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2023_01_21_195258) do
     t.string "sprite"
   end
 
-  create_table "teams", force: :cascade do |t|
+  create_table "starters", force: :cascade do |t|
     t.integer "pokemon_id"
     t.integer "user_id"
     t.string "name"
