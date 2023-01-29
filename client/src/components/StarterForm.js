@@ -7,13 +7,12 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const Teams = ({ pokemon }) => {
-    const [teams, setTeams] = useState([]);
+const StarterForm = ({ pokemon }) => {
+    const [starters, setStarters] = useState([]);
 
     const [form, setForm] = useState({});
 
     let handleChange = (e) => {
-        //let pokemon_id = e.target.id
         let name = e.target.name
         let value = e.target.value
         setForm({
@@ -24,7 +23,7 @@ const Teams = ({ pokemon }) => {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        fetch("http://localhost:9292/teams", {
+        fetch("http://localhost:9292/starters", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +31,7 @@ const Teams = ({ pokemon }) => {
             body: JSON.stringify(form),
         })
             .then((res) => res.json())
-            .then((data) => setTeams(data, ...teams));
+            .then((data) => setStarters(data, ...starters));
     };
 
     return (
@@ -40,7 +39,7 @@ const Teams = ({ pokemon }) => {
             <Card.Header className="fs-2 pokemonContainer"><b>Create Pokemon Team</b></Card.Header>
             <Form onSubmit={handleSubmit} className="addPokemon" style={{ backgroundColor: '#3C4048' }}>
                 <Form.Group className="mb-3">
-                    <Form.Label><i>Enter Team Name</i></Form.Label>
+                    <Form.Label><i>Enter Nickname</i></Form.Label>
                     <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -58,7 +57,7 @@ const Teams = ({ pokemon }) => {
                     </Form.Select>
                 </Form.Group>
                 <Button style={{ backgroundColor: '#00ABB3' }} type="submit">
-                    Create Team
+                    Starter Chosen!
                 </Button>
             </Form>
         </Fragment>
@@ -66,4 +65,4 @@ const Teams = ({ pokemon }) => {
 
 }
 
-export default Teams;
+export default StarterForm;

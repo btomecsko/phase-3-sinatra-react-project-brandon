@@ -29,7 +29,7 @@ const CreateUser = () => {
         })
             .then((res) => res.json())
             .then((data) => setUsers(data, ...users));
-            navigate("/createteam")
+            navigate("/choosestarter")
     };
 
     return (

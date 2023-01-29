@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./components/Home";
-import TeamForm from "./components/TeamForm";
+import StarterForm from "./components/StarterForm";
 import PokemonContainer from "./components/Pokedex/PokemonContainer";
 import CreateUser from "./components/CreateUser";
 
@@ -35,7 +35,7 @@ const App = () => {
     <div className="App">
       <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/createteam" element={<TeamForm 
+          <Route path="/choosestarter" element={<StarterForm 
           pokemon={searchPokemon}
           pokeId={pokeId}
           />} />
