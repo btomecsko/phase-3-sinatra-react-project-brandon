@@ -12,12 +12,12 @@ const Teams = ({ pokemon }) => {
     const [form, setForm] = useState({});
 
     let handleChange = (e) => {
-        let pokemon_id = e.target.pokeid
+        //let pokemon_id = e.target.id
         let name = e.target.name
         let value = e.target.value
         setForm({
             ...form,
-            [pokemon_id]: value,
+            //[pokemon_id]: value,
             [name]:value,
         })
     }
@@ -49,7 +49,7 @@ const Teams = ({ pokemon }) => {
                         {pokemon.length > 0 ? pokemon.map(poke => (
                             <Dropdown
                                 key={poke.id}
-                                pokeid={poke.dex_num}
+                                pokeid={poke.id}
                                 name={poke.name}
                             />
                         ))
