@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import StarterForm from "./components/StarterForm";
 import PokemonContainer from "./components/Pokedex/PokemonContainer";
 import CreateUser from "./components/CreateUser";
+import Starter from "./components/Starter";
 
 
 const App = () => {
@@ -56,6 +57,7 @@ const App = () => {
           pokemon={searchPokemon}
           onSearch={setSearchTerm}
           />} />
+          <Route path="/starter" element={<Starter/>}/>
       </Routes>
     </div>
   );

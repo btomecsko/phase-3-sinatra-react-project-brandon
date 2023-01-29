@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PokeDrop from "./PokeDrop";
 import UserDrop from "./UserDrop";
@@ -9,9 +10,11 @@ import Card from 'react-bootstrap/Card';
 
 
 const StarterForm = ({ pokemon, users }) => {
-    const [starters, setStarters] = useState([]);
 
+    const [starters, setStarters] = useState([]);
     const [form, setForm] = useState({});
+
+    const navigate = useNavigate();
 
     let handleChange = (e) => {
         let name = e.target.name
@@ -33,6 +36,7 @@ const StarterForm = ({ pokemon, users }) => {
         })
             .then((res) => res.json())
             .then((data) => setStarters(data, ...starters));
+            navigate("/starter")
     };
 
     return (
