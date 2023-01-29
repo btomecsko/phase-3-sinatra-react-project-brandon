@@ -12,6 +12,7 @@ import CreateUser from "./components/CreateUser";
 const App = () => {
 
   const [pokemon, setPokemon] = useState([]);
+  const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
@@ -24,12 +25,23 @@ const App = () => {
     loadPokemon();
   }, []);
 
+  useEffect(() => {
+
+    const loadUsers = async () => {
+      const resp = await fetch('http://localhost:9292/users')
+      const data = await resp.json();
+      setUsers(data);
+    }
+    loadUsers();
+  }, []);
+
   const searchPokemon = pokemon.filter((poke) =>
      poke.name.toLowerCase().includes(searchTerm.toLowerCase())
    );
 
-   const pokeId = pokemon.filter((poke) =>
-      poke.id === searchTerm)[0];
+  const searchUsers = users.filter((user) => 
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="App">
@@ -37,7 +49,7 @@ const App = () => {
           <Route path="/" element={<Home/>}/>
           <Route path="/choosestarter" element={<StarterForm 
           pokemon={searchPokemon}
-          pokeId={pokeId}
+          users={searchUsers}
           />} />
           <Route path="createuser" element={<CreateUser/>}/>
           <Route path="/pokedex" element={<PokemonContainer 

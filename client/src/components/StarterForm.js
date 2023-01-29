@@ -1,13 +1,14 @@
 import React, { Fragment, useState } from "react";
 
 import PokeDrop from "./PokeDrop";
+import UserDrop from "./UserDrop";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const StarterForm = ({ pokemon }) => {
+const StarterForm = ({ pokemon, users }) => {
     const [starters, setStarters] = useState([]);
 
     const [form, setForm] = useState({});
@@ -41,6 +42,20 @@ const StarterForm = ({ pokemon }) => {
                 <Form.Group className="mb-3">
                     <Form.Label><i>Enter Nickname</i></Form.Label>
                     <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Select User</Form.Label>
+                    <Form.Select type="text" name="user_id" placeholder="User" onChange={handleChange}>
+                        {users.length > 0 ? users.map(user => (
+                            <UserDrop
+                                key={user.id}
+                                userid={user.id}
+                                name={user.name}
+                            />
+                        ))
+                            : "No Users to List!"
+                        }
+                    </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Select Pokemon</Form.Label>
