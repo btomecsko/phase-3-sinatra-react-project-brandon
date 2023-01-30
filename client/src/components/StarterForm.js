@@ -6,7 +6,6 @@ import UserDrop from "./Dropdowns/UserDrop";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 
 const StarterForm = ({ pokemon, users }) => {
@@ -41,8 +40,11 @@ const StarterForm = ({ pokemon, users }) => {
 
     return (
         <Fragment>
-            <Card.Header className="fs-2 pokemonContainer"><b>Create Pokemon Team</b></Card.Header>
-            <Form onSubmit={handleSubmit} className="addPokemon" style={{ backgroundColor: '#3C4048' }}>
+            <div className='header'>
+                <h1>Choose your Starter!</h1>
+            </div>
+            <div className='home' >
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label><i>Enter Nickname</i></Form.Label>
                     <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
@@ -79,6 +81,7 @@ const StarterForm = ({ pokemon, users }) => {
                     Starter Chosen!
                 </Button>
             </Form>
+            </div>
         </Fragment>
     );
 
