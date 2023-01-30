@@ -14,7 +14,7 @@ const CreateUser = () => {
         let value = e.target.value
         setForm({
             ...userForm,
-            [name]:value,
+            [name]: value,
         })
     }
 
@@ -29,7 +29,7 @@ const CreateUser = () => {
         })
             .then((res) => res.json())
             .then((data) => setUsers(data, ...users));
-            navigate("/choosestarter")
+        navigate("/choosestarter")
     };
 
     return (

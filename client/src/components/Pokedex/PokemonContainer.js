@@ -6,7 +6,7 @@ import Pokemon from "./Pokemon";
 import Search from "./Search";
 
 
-const PokemonContainer = ({pokemon, onSearch}) => {
+const PokemonContainer = ({ pokemon, onSearch }) => {
 
 
   return (
@@ -26,8 +26,8 @@ const PokemonContainer = ({pokemon, onSearch}) => {
               sprite={poke.sprite}
             />
           ))
-          : "No Pokemon to Display!"
-        }
+            : "No Pokemon to Display!"
+          }
         </ul>
       </div>
     </div>

@@ -14,6 +14,7 @@ const App = () => {
 
   const [pokemon, setPokemon] = useState([]);
   const [users, setUsers] = useState([]);
+  const [starters, setStarters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
@@ -36,6 +37,16 @@ const App = () => {
     loadUsers();
   }, []);
 
+  useEffect(() => {
+
+    const loadStarter = async () => {
+        const resp = await fetch('http://localhost:9292/starters')
+        const data = await resp.json();
+        setStarters(data);
+    }
+    loadStarter();
+}, []);
+
   const searchPokemon = pokemon.filter((poke) =>
      poke.name.toLowerCase().includes(searchTerm.toLowerCase())
    );
@@ -43,6 +54,11 @@ const App = () => {
   const searchUsers = users.filter((user) => 
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const searchStarter = starters.filter((starter) =>
+    starter.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 
   return (
     <div className="App">
@@ -57,7 +73,9 @@ const App = () => {
           pokemon={searchPokemon}
           onSearch={setSearchTerm}
           />} />
-          <Route path="/starter" element={<Starter/>}/>
+          <Route path="/starter" element={<Starter
+          starters={searchStarter}
+          />}/>
       </Routes>
     </div>
   );
