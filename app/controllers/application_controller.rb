@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
      user = User.find(params[:id])
 
      #JSON response with associated starters and pokemon
-     user.to_json(include: { starters: {include: {pokemon: { only: [:name, :sprite]}}}} )
+     user.to_json(only: [:id, :name], include: { starters: {only: [:name], include: {pokemon: { only: [:name, :sprite]}}}} )
   end
 
   post '/users' do

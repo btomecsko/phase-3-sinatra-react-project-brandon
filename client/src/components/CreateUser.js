@@ -18,17 +18,18 @@ const CreateUser = () => {
         })
     }
 
-    let handleSubmit = (e) => {
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        fetch("http://localhost:9292/users", {
+        const settings =  {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userForm),
-        })
-            .then((res) => res.json())
-            .then((data) => setUsers(data, ...users));
+        };
+        const resp = await fetch("http://localhost:9292/users", settings); 
+        const data = await resp.json();
+        setUsers(data, ...users);
         navigate("/choosestarter")
     };
 

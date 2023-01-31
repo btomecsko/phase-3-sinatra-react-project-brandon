@@ -24,18 +24,19 @@ const StarterForm = ({ pokemon, users }) => {
         })
     }
 
-    let handleSubmit = (e) => {
+    let handleSubmit = async (e) => {
         e.preventDefault();
-        fetch("http://localhost:9292/starters", {
+        const settings = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(form),
-        })
-            .then((res) => res.json())
-            .then((data) => setStarters(data, ...starters));
-        navigate("/starter")
+        };
+        const resp = await fetch("http://localhost:9292/starters", settings);
+        const data = await resp.json();
+        setStarters(data, ...starters);
+        navigate("/selectuser")
     };
 
     return (
