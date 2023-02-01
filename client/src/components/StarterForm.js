@@ -35,7 +35,7 @@ const StarterForm = ({ pokemon, users }) => {
         };
         const resp = await fetch("http://localhost:9292/starters", settings);
         const data = await resp.json();
-        setStarters(data, ...starters);
+        setStarters([...starters, data]);
         navigate("/selectuser")
     };
 
@@ -53,6 +53,7 @@ const StarterForm = ({ pokemon, users }) => {
                 <Form.Group className="mb-3">
                     <Form.Label>Select User</Form.Label>
                     <Form.Select type="text" name="user_id" placeholder="User" onChange={handleChange}>
+                        <option>Please select your user...</option>
                         {users.length > 0 ? users.map(user => (
                             <UserDrop
                                 key={user.id}
@@ -67,6 +68,7 @@ const StarterForm = ({ pokemon, users }) => {
                 <Form.Group className="mb-3">
                     <Form.Label>Select Pokemon</Form.Label>
                     <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
+                    <option>Please select your Starter...</option>
                         {pokemon.length > 0 ? pokemon.map(poke => (
                             <PokeDrop
                                 key={poke.id}

@@ -29,7 +29,7 @@ const CreateUser = () => {
         };
         const resp = await fetch("http://localhost:9292/users", settings); 
         const data = await resp.json();
-        setUsers(data, ...users);
+        setUsers([...users, data]);
         navigate("/choosestarter")
     };
 
