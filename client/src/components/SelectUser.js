@@ -59,7 +59,8 @@ const SelectUser = ({ users }) => {
                     {user.starters.length > 0 ? user.starters.map((starter, index) => (
                         <StarterList
                             key={index}
-                            starter={starter}
+                            starId={starter}
+                            starter={setUsers}
                             sprite={starter.pokemon.sprite}
                             name={starter.pokemon.name}
                         />
