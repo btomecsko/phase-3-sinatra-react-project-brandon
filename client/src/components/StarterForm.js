@@ -15,6 +15,8 @@ const StarterForm = ({ pokemon, users }) => {
 
     const navigate = useNavigate();
 
+    //Change handler that receives the pokemon id and user id 
+    //from dropdown child components for the starters join table
     let handleChange = (e) => {
         let name = e.target.name
         let value = e.target.value
@@ -24,6 +26,8 @@ const StarterForm = ({ pokemon, users }) => {
         })
     }
 
+    //Submit handler that takes the data from the change handler
+    //uses a POST request to update thes starters table on the backend
     let handleSubmit = async (e) => {
         e.preventDefault();
         const settings = {
@@ -45,45 +49,45 @@ const StarterForm = ({ pokemon, users }) => {
                 <h1>Choose your Starter!</h1>
             </div>
             <div className='home' >
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Label><i>Enter Nickname</i></Form.Label>
-                    <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Select User</Form.Label>
-                    <Form.Select type="text" name="user_id" placeholder="User" onChange={handleChange}>
-                        <option>Please select your user...</option>
-                        {users.length > 0 ? users.map(user => (
-                            <UserDrop
-                                key={user.id}
-                                userid={user.id}
-                                name={user.name}
-                            />
-                        ))
-                            : "No Users to List!"
-                        }
-                    </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Select Pokemon</Form.Label>
-                    <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
-                    <option>Please select your Starter...</option>
-                        {pokemon.length > 0 ? pokemon.map(poke => (
-                            <PokeDrop
-                                key={poke.id}
-                                pokeid={poke.id}
-                                name={poke.name}
-                            />
-                        ))
-                            : "No Pokemon to List!"
-                        }
-                    </Form.Select>
-                </Form.Group>
-                <Button style={{ backgroundColor: '#00ABB3' }} type="submit">
-                    Starter Chosen!
-                </Button>
-            </Form>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3">
+                        <Form.Label><i>Enter Nickname</i></Form.Label>
+                        <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Select User</Form.Label>
+                        <Form.Select type="text" name="user_id" placeholder="User" onChange={handleChange}>
+                            <option>Please select your user...</option>
+                            {users.length > 0 ? users.map(user => (
+                                <UserDrop
+                                    key={user.id}
+                                    userid={user.id}
+                                    name={user.name}
+                                />
+                            ))
+                                : "No Users to List!"
+                            }
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Select Pokemon</Form.Label>
+                        <Form.Select type="text" name="pokemon_id" placeholder="Pokemon" onChange={handleChange}>
+                            <option>Please select your Starter...</option>
+                            {pokemon.length > 0 ? pokemon.map(poke => (
+                                <PokeDrop
+                                    key={poke.id}
+                                    pokeid={poke.id}
+                                    name={poke.name}
+                                />
+                            ))
+                                : "No Pokemon to List!"
+                            }
+                        </Form.Select>
+                    </Form.Group>
+                    <Button style={{ backgroundColor: '#00ABB3' }} type="submit">
+                        Starter Chosen!
+                    </Button>
+                </Form>
             </div>
         </Fragment>
     );

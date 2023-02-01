@@ -8,11 +8,6 @@ import Button from 'react-bootstrap/Button';
 const StarterList = ({ sprite, name, starId, starter }) => {
 
 
-  // function removeStarter (teamId){
-  //   const deleStar = startId.filter((start) => start.id !== teamId);
-  //   setStarId(deleStar)
-  // }
-
   function deleteClick(id){
     fetch(`http://localhost:9292/starters/${id}`, {
       method: "DELETE"

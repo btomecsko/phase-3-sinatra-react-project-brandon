@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const CreateUser = () => {
+const CreateUser = ({ refreshUs }) => {
     const [users, setUsers] = useState([]);
     const [userForm, setUse] = useState({});
     const navigate = useNavigate();
 
+    //change handler to receive new user information and put it in the form state object
     let handleChange = (e) => {
         let name = e.target.name
         let value = e.target.value
@@ -18,18 +19,20 @@ const CreateUser = () => {
         })
     }
 
+    //Submit function handling a POST request to add a new user then navigate you to the starter selection
     let handleSubmit = async (e) => {
         e.preventDefault();
-        const settings =  {
+        const settings = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userForm),
         };
-        const resp = await fetch("http://localhost:9292/users", settings); 
+        const resp = await fetch("http://localhost:9292/users", settings);
         const data = await resp.json();
-        setUsers([...users, data]);
+        refreshUs();
+        setUsers(...users, data);
         navigate("/choosestarter")
     };
 
