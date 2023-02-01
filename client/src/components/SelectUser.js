@@ -26,7 +26,13 @@ const SelectUser = ({ users }) => {
         setUsers(data);
     }
 
-    
+    let refreshUser = async () => {
+        const res = await fetch(`http://localhost:9292/users/${userId}`);
+        const data = await res.json();
+        //console.log(userId)
+        
+        setUsers(data);
+    }
 
 
     return (
@@ -60,7 +66,7 @@ const SelectUser = ({ users }) => {
                         <StarterList
                             key={index}
                             starId={starter}
-                            starter={setUsers}
+                            starter={refreshUser}
                             sprite={starter.pokemon.sprite}
                             name={starter.pokemon.name}
                         />

@@ -5,7 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 
 
-const StarterList = ({ sprite, name, starId }) => {
+const StarterList = ({ sprite, name, starId, starter }) => {
 
 
   // function removeStarter (teamId){
@@ -16,9 +16,10 @@ const StarterList = ({ sprite, name, starId }) => {
   function deleteClick(id){
     fetch(`http://localhost:9292/starters/${id}`, {
       method: "DELETE"
-    }).then((resp)=> {
-      resp.json().then((resp) => {
-        console.warn(resp)
+    })
+    .then((resp) => {resp.json()
+    .then((resp) => {console.warn(resp)
+      starter()
       })
     })
   }
