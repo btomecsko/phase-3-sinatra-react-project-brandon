@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import UserDrop from "../Dropdowns/UserDrop";
 import StarterList from "./StarterList";
 
@@ -11,6 +13,12 @@ const SelectUser = ({ users }) => {
 
     const [userId, setUserId] = useState(0);
     const [user, setUsers] = useState({starters: []});
+
+    const navigate = useNavigate();
+
+    let returnHome = () => {
+        navigate("/")
+      }
 
     let addStarters = (e) => {
         let value = e.target.value
@@ -57,6 +65,9 @@ const SelectUser = ({ users }) => {
                     </Form.Select>
                     </Form.Group>
                 <Button style={{ backgroundColor: '#00ABB3' }} type="submit">User Selected</Button>
+                <Button onClick={returnHome} style={{ backgroundColor: '#00ABB3' }}>
+                    Home
+                </Button>
                 </Form>
                 <h4>Starter</h4>
                 <div className="pokemonContainer">
