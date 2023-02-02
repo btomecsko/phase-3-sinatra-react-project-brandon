@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import PokeDrop from "./Dropdowns/PokeDrop";
-import UserDrop from "./Dropdowns/UserDrop";
+import PokeDrop from "../Dropdowns/PokeDrop";
+import UserDrop from "../Dropdowns/UserDrop";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
