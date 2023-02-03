@@ -24,7 +24,7 @@ const StarterList = ({ sprite, pokemon, starter, refresh, starId }) => {
           })
       })
   }
-  
+
   //Put request updates the pokemon nickname
   function updateName() {
     let newName = { name }
@@ -47,13 +47,13 @@ const StarterList = ({ sprite, pokemon, starter, refresh, starId }) => {
 
   return (
     <li className="pokeCard">
-      <Card style={{ width: '18rem', backgroundColor: '#3C4048' }}>
+      <Card style={{ width: '18rem' }}>
         <Card.Img className="pokeImage" variant="top" src={sprite} alt={pokemon} />
         <ListGroup className="list-group-flush">
-          <ListGroup.Item style={{ backgroundColor: '#3C4048' }}><b>{pokemon}</b></ListGroup.Item>
+          <ListGroup.Item><b>{pokemon}</b></ListGroup.Item>
         </ListGroup>
         <ListGroup className="list-group-flush">
-          <ListGroup.Item style={{ backgroundColor: '#3C4048' }}><b>{starter.name}</b></ListGroup.Item>
+          <ListGroup.Item ><b>{starter.name}</b></ListGroup.Item>
         </ListGroup>
         <Button onClick={() => deleteClick(starter.id)} style={{ textTransform: 'uppercase', fontSize: '12px', fontWeight: '700', textAlign: 'center', backgroundColor: '#222224', border: '1px solid #1BA098', borderRadius: '50px', height: '20%', width: '65%', margin: '75px 50px 0 50px' }}>
           Delete your Starter!
