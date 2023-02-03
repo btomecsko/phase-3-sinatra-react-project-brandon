@@ -13,7 +13,7 @@ const SelectUser = ({ users }) => {
 
     const [userId, setUserId] = useState(0);
     const [user, setUsers] = useState({starters: []});
-    const [newName, setNewName] = useState({starters: []})
+    //const [newName, setNewName] = useState({starters: []})
 
     const navigate = useNavigate();
 
@@ -31,7 +31,6 @@ const SelectUser = ({ users }) => {
         const res = await fetch(`http://localhost:9292/users/${userId}`);
         const data = await res.json();
         //console.log(userId)
-        
         setUsers(data);
     }
 
@@ -41,19 +40,19 @@ const SelectUser = ({ users }) => {
         //console.log(userId)
         
         setUsers(data);
-        setNewName(data);
+       
     }
 
-    function handleUpdateStarter(updatedName) {
-        const updateStarter = newName.starters.map((currentName) => {
-          if (updatedName.name === currentName.name) {
-            return updatedName;
-          } else {
-            return currentName;
-          }
-        });
-        setNewName(updateStarter);
-      }
+    // function handleUpdateStarter(updatedName) {
+    //     const updateStarter = newName.starters.map((currentName) => {
+    //       if (updatedName.id === currentName.id) {
+    //         return updatedName;
+    //       } else {
+    //         return currentName;
+    //       }
+    //     });
+    //     setNewName(updateStarter);
+    //   }
 
     return (
         <Fragment>
@@ -85,15 +84,16 @@ const SelectUser = ({ users }) => {
                 <div className="pokemonContainer">
                 <div>
                 <ul className="pokemonList">
-                    {user.starters.length > 0 ? user.starters.map((starter) => {
+                    {user.starters.length > 0 ? user.starters.map((starter, index) => {
                         return(
                         <StarterList
-                            key={starter.id}
-                            starId={starter}
-                            starter={refreshUser}
+                            key={index}
+                            starter={starter}
+                            starId={starter.id}
+                            refresh={refreshUser}
                             sprite={starter.pokemon.sprite}
                             pokemon={starter.pokemon.name}
-                            editStarter={handleUpdateStarter}
+                            //editStarter={handleUpdateStarter}
                         />
                         )
                     }) : "No Starters to Display"}
