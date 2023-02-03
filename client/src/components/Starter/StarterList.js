@@ -1,77 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+//import Form from 'react-bootstrap/Form';
 
 
-const StarterList = ({ sprite, pokemon, starter, refresh }) => {
+const StarterList = ({ sprite, pokemon, starter, refresh, starId }) => {
 
   const [visible, setVisible] = useState(false);
-  const [newName, setNewName] = useState([])
-  //const [starterId, setStartId] = useState();
-  //const [upForm, setUpdate] = useState([]);
-  //const [upStart, setUpStar] = useState([]);
+  const [name, setNewName] = useState("")
 
-  useEffect(() => {
-    const loadStarters = async () => {
-      const resp = await fetch('http://localhost:9292/starters')
-      const data = await resp.json();
-      setNewName(data);
-    }
-    loadStarters();
-  })
-
-  function handleUpdateStarter(updatedName) {
-    const updateStarter = newName.map((currentName) => {
-      if (updatedName.name === currentName.name) {
-        return updatedName;
-      } else {
-        return currentName;
-      }
-    });
-    setNewName(updateStarter);
-  }
-
+  //Delete request handles deleting the starter associated with the user
   function deleteClick(id) {
     fetch(`http://localhost:9292/starters/${id}`, {
       method: "DELETE"
     })
       .then((resp) => {
         resp.json()
-        .then((resp) => {
-          console.warn(resp)
-          refresh()
-        })
+          .then((resp) => {
+            console.warn(resp)
+            refresh()
+          })
       })
   }
-
-// function handleUpdateStarter(updatedName) {
-//   const updateStarter = starId.map((start) => {
-//     if (start.id === updatedName.id) {
-//       return updateStarter;
-//     } else {
-//       return start;
-//     }
-//   });
-//   setName(updatedName);
-// }
-const handleNewName = (id) => {
-  fetch(`http://localhost:9292/starters/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: starter.name
-  }),
-  })
-  .then((res) => res.json())
-  .then(data => {
-    handleUpdateStarter(data)
-  })
-}
+  
+  //Put request updates the pokemon nickname
+  function updateName() {
+    let newName = { name }
+    console.warn("name", newName)
+    fetch(`http://localhost:9292/starters/${starId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newName)
+    })
+      .then((resp) => {
+        resp.json()
+          .then((resp) => {
+            console.warn(resp)
+            refresh()
+          })
+      })
+  }
 
   return (
     <li className="pokeCard">
@@ -90,15 +62,12 @@ const handleNewName = (id) => {
           {visible ? 'Cancel' : 'Update Nickname'}
         </Button>
         {visible &&
-          <Form>
-            <Form.Group className="mb-3">
-                <Form.Label><i>Enter a New Nickname...</i></Form.Label>
-                <Form.Control type="text" name="name" placeholder="Name"/>
-            </Form.Group>
-            <Button style={{ backgroundColor: '#00ABB3' }} type="submit" onClick={handleNewName(starter.id)}>
+          <div>
+            <input type="text" value={name} onChange={(e) => setNewName(e.target.value)} /> <br />
+            <Button style={{ backgroundColor: '#00ABB3' }} onClick={updateName}>
               Confirm
             </Button>
-          </Form>
+          </div>
         }
       </Card>
     </li>

@@ -60,7 +60,7 @@ class ApplicationController < Sinatra::Base
     starters.to_json
   end
 
-  patch '/starters/:id' do
+  put '/starters/:id' do
     # find the starter using the ID
     starters = Starter.find(params[:id])
 
