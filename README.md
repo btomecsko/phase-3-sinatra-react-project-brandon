@@ -23,6 +23,8 @@ Steps:
               ***the second part is selecting your user, choosing your starter and nicknaming your starter
               ***the final part allows you to select your name to review your starter selections, update their nicknames or delete the starter
 
+###Note
+All images and pokemon names used in this program are part of the pokemon company. Images used are from a pokemon wikipedia called Bulbapedia.
 
 ###ERD - Entity Relationship Diagram
 ![ERD](ERD/PokemonERD.png)
