@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
      user = User.find(params[:id])
 
      #JSON response with associated starters and pokemon
-     user.to_json(only: [:id, :name], include: { starters: {only: [:id, :name], include: {pokemon: { only: [:name, :sprite]}}}} )
+     user.to_json(only: [:id, :name], include: { starters: {only: [:id, :name], include: {pokemon: { only: [:id, :name, :sprite]}}}} )
   end
 
   post '/users' do
@@ -67,7 +67,6 @@ class ApplicationController < Sinatra::Base
     # update the starter in the database
     starters.update(
       name: params[:name],
-      pokemon_id: params[:pokemon_id]
     )
 
     # send back the updated starter as JSON

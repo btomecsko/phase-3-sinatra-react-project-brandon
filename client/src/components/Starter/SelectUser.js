@@ -13,6 +13,7 @@ const SelectUser = ({ users }) => {
 
     const [userId, setUserId] = useState(0);
     const [user, setUsers] = useState({starters: []});
+    const [newName, setNewName] = useState({starters: []})
 
     const navigate = useNavigate();
 
@@ -40,8 +41,19 @@ const SelectUser = ({ users }) => {
         //console.log(userId)
         
         setUsers(data);
+        setNewName(data);
     }
 
+    function handleUpdateStarter(updatedName) {
+        const updateStarter = newName.starters.map((currentName) => {
+          if (updatedName.name === currentName.name) {
+            return updatedName;
+          } else {
+            return currentName;
+          }
+        });
+        setNewName(updateStarter);
+      }
 
     return (
         <Fragment>
@@ -73,15 +85,18 @@ const SelectUser = ({ users }) => {
                 <div className="pokemonContainer">
                 <div>
                 <ul className="pokemonList">
-                    {user.starters.length > 0 ? user.starters.map((starter, index) => (
+                    {user.starters.length > 0 ? user.starters.map((starter) => {
+                        return(
                         <StarterList
-                            key={index}
+                            key={starter.id}
                             starId={starter}
                             starter={refreshUser}
                             sprite={starter.pokemon.sprite}
-                            name={starter.pokemon.name}
+                            pokemon={starter.pokemon.name}
+                            editStarter={handleUpdateStarter}
                         />
-                    )) : "No Starters"}
+                        )
+                    }) : "No Starters to Display"}
 
                 </ul>
             </div>

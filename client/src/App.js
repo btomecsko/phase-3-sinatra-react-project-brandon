@@ -14,7 +14,7 @@ const App = () => {
 
   const [pokemon, setPokemon] = useState([]);
   const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
 
   //Fetch request to call on Pokemon for Pokedex and Starter Form
   useEffect(() => {
@@ -41,6 +41,15 @@ const App = () => {
     }
     loadUsers();
   }
+
+  useEffect(() => {
+    const loadPokemon = async () => {
+      const resp = await fetch('http://localhost:9292/pokemons')
+      const data = await resp.json();
+      setPokemon(data);
+    }
+    loadPokemon();
+  })
 
   //Search filter to be used in the pokedex to search for pokemon
   const searchPokemon = pokemon.filter((poke) =>

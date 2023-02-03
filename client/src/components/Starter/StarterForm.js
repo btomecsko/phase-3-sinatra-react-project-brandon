@@ -51,10 +51,6 @@ const StarterForm = ({ pokemon, users }) => {
             <div className='home' >
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
-                        <Form.Label><i>Enter Nickname</i></Form.Label>
-                        <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
                         <Form.Label>Select User</Form.Label>
                         <Form.Select type="text" name="user_id" placeholder="User" onChange={handleChange}>
                             <option>Please select your user...</option>
@@ -83,6 +79,10 @@ const StarterForm = ({ pokemon, users }) => {
                                 : "No Pokemon to List!"
                             }
                         </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label><i>Enter A Nickname for your Starter...</i></Form.Label>
+                        <Form.Control type="text" name="name" placeholder="Name" onChange={handleChange} />
                     </Form.Group>
                     <Button style={{ backgroundColor: '#00ABB3' }} type="submit">
                         Starter Chosen!
